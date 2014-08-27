@@ -1,6 +1,8 @@
 Heroku Buildpack for Node.js
 ============================
 
+I've altered the buildpack so it doesn't automatically rebuild dependencies when the node version changes. One of my apps was choking at this stage...
+
 This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Node.js apps. If you fork this repository, please **update this README** to explain what your fork does and why it's special.
 
 
