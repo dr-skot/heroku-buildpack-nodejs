@@ -11,7 +11,9 @@ git push heroku master
 heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs
 ```
 
-Below is the original readme from heroku.
+(That last line resets you to using the standard buildpack again.)
+
+The rest of this document is just the original readme from heroku.
 
 Heroku Buildpack for Node.js
 ============================
