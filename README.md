@@ -1,7 +1,20 @@
+Heroku Buildpack for Node.js (hacked to bypass rebuild)
+=======================================================
+
+I've just changed one thing about the buildpack: my version doesn't rebuild cached dependencies when the version number of node changes. I had an app that I couldn't push because the new version of node failed to rebuild phantomjs-1.9.6. So heroku was rejecting the push, even though my new package.json specified phantomjs-1.9.7, because the rebuilding happens BEFORE scanning package.json for updates. I wasn't going to get anywhere unless I could either 1) remember what version of node was in effect the last time I pushed, or 2) bypass the rebuild. This buildpack hack accomplishes #2.
+
+Here's how you use it.
+
+```
+heroku config:set BUILDPACK_URL=https://github.com/dr-skot/heroku-buildpack-nodejs
+git push heroku master
+heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-nodejs
+```
+
+Below is the original readme from heroku.
+
 Heroku Buildpack for Node.js
 ============================
-
-I've altered the buildpack so it doesn't automatically rebuild dependencies when the node version changes. One of my apps was choking at this stage...
 
 This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Node.js apps. If you fork this repository, please **update this README** to explain what your fork does and why it's special.
 
